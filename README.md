@@ -1,6 +1,6 @@
 # lined
 Line Editor for FreeBASIC - a miniature replacement for GNU readline using [linenoise](https://github.com/antirez/linenoise).
-This supports hints and tab-based command completion.
+This supports hints and tab-based command completion. Should work on all Unix-like systems.
 
 Generate the linenoise library archive:
 
