@@ -13,15 +13,15 @@ void completion(const char *buf, linenoiseCompletions *lc) {
 }
 
 char *hints(const char *buf, int *color, int *bold) {
-    if (!strcasecmp(buf,"hello")) {
-        *color = 35;
-        *bold = 0;
-        return " World";
-    } else if (!strcasecmp(buf,"hello ")) {
+    if (!strcasecmp(buf,"hello ")) {
         *color = 35;
         *bold = 0;
         return "there";
-    }
+    } else if (!strcasecmp(buf,"hello")) {
+        *color = 35;
+        *bold = 0;
+        return " World";
+	}
     return NULL;
 }
 
@@ -60,8 +60,11 @@ int main(int argc, char **argv) {
      *
      * The typed string is returned as a malloc() allocated string by
      * linenoise, so the user needs to free() it. */
-    
-    while((line = linenoise("hello> ")) != NULL) {
+	#define RED "\x1B[31m"
+	#define WHITE "\x1B[37m"
+	#define RESET "\x1B[0m"
+    while((line = linenoise("\x1B[37mhello> \x1B[0m")) != NULL) {
+    //while((line = linenoise("hello> ")) != NULL) {
         /* Do something with the string. */
         if (line[0] != '\0' && line[0] != '/') {
             printf("echo: '%s'\n", line);

@@ -36,7 +36,7 @@ linenoiseSetHintsCallback(hintsFunctionPtr)
 linenoiseHistoryLoad("history.txt")
 
 do
-	lineStrPtr = linenoise("basic#" & str(cmdCount) & "> ")
+	lineStrPtr = linenoise(!"\x1B[37mbasic #" & str(cmdCount) & !">\x1B[0m ")
 	if lineStrPtr = 0 then
 		exit do
 	end if
